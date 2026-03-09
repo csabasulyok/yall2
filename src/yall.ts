@@ -1,9 +1,9 @@
-import path from 'path';
-import winston, { Logger } from 'winston';
 import autoBind from 'auto-bind';
 import extol from 'extol';
+import path from 'node:path';
+import winston, { Logger } from 'winston';
 
-const projectRoot = path.join(__dirname, '..');
+const projectRoot = path.join(import.meta.dirname, '..');
 
 /**
  * Logger capable of printing caller filename and line
@@ -31,13 +31,20 @@ export class Yall {
     }
 
     // winston formatters based on config
-    const formatters = [
-      this.yallColored && winston.format.colorize({ all: true }),
-      this.yallTimestamp && winston.format.timestamp(),
-      this.yallTimestamp &&
+    const formatters: winston.Logform.Format[] = [];
+
+    if (this.yallColored) {
+      formatters.push(winston.format.colorize({ all: true }));
+    }
+
+    if (this.yallTimestamp) {
+      formatters.push(
+        winston.format.timestamp(),
         winston.format.printf((info) => `${info.timestamp} {${this.stackInfo}} [${info.level}]: ${info.message}`),
-      !this.yallTimestamp && winston.format.printf((info) => `{${this.stackInfo}} [${info.level}]: ${info.message}`),
-    ].filter((f) => f);
+      );
+    } else {
+      formatters.push(winston.format.printf((info) => `{${this.stackInfo}} [${info.level}]: ${info.message}`));
+    }
 
     // configure Winston logger
     this.logger = winston.createLogger({
@@ -72,7 +79,7 @@ export class Yall {
   setStackInfo(): void {
     // get call stack, and analyze it
     // get all file, method, and line numbers
-    const stacklist = new Error().stack?.split('\n');
+    const stacklist = new Error('workaround').stack?.split('\n');
 
     // stack trace format:
     // http://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
@@ -80,10 +87,10 @@ export class Yall {
     const stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/gi;
     const stackReg2 = /at\s+()(.*):(\d*):(\d*)/gi;
 
-    const s = stacklist[3] || stacklist[0];
-    const sp = stackReg.exec(s) || stackReg2.exec(s);
+    const s = stacklist?.[3] ?? stacklist?.[0];
+    const sp = s ? (stackReg.exec(s) ?? stackReg2.exec(s)) : null;
 
-    if (sp && sp.length === 5) {
+    if (sp?.length === 5) {
       const filename = path.relative(projectRoot, sp[2]);
       const line = Number(sp[3]);
       this.stackInfo = `${filename}:${line}`;

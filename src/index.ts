@@ -1,7 +1,5 @@
-import yall from './yall';
+export * from './yall.js';
+export * from './yallaxios.js';
+export * from './yallmorgan.js';
 
-export * from './yall';
-export * from './yallaxios';
-export * from './yallmorgan';
-
-export default yall;
+export { default } from './yall.js';
