@@ -5,8 +5,8 @@ import yall from './yall.js';
  * YALL axios middleware settings
  */
 export type YallAxiosConfig = {
-  readLevel?: string; // log level used for GET and HEAD calls. Default: debug
-  writeLevel?: string; // log level used for all other calls. Default: info
+  readLevel: string; // log level used for GET and HEAD calls. Default: debug
+  writeLevel: string; // log level used for all other calls. Default: info
 };
 
 /**

@@ -13,7 +13,7 @@ export class Yall {
   yallLevel: string;
 
   @extol()
-  yallFilename: string;
+  yallFilename?: string;
 
   @extol(true, { json: true })
   yallColored: boolean;

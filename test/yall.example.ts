@@ -1,4 +1,6 @@
-import yall from '../src';
+#!/usr/bin/env tsx
+
+import yall from '../src/index.js';
 
 yall.debug('Debug level message');
 yall.info('Info level message');

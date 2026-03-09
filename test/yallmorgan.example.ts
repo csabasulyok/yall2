@@ -1,6 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+#!/usr/bin/env tsx
+
 import express from 'express';
-import yall, { yallMorgan } from '../src';
+import yall, { yallMorgan } from '../src/index.js';
 
 const app = express();
 
@@ -12,4 +13,12 @@ app.use(yallMorgan({ readLevel: 'info' }));
 app.use((req, res) => res.send(`Hello, you have sent ${req.method} to path ${req.url}`));
 
 // start server on port 8080
-app.listen(8080, () => yall.info('Listening on port 8080...'));
+app.listen(8080, (error) => {
+  if (error) {
+    yall.error(`Error starting server: ${error.message}`);
+    process.exit(1);
+  }
+
+  yall.info('Listening on port 8080...');
+  yall.info('Try: curl http://localhost:8080/test');
+});

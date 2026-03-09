@@ -18,8 +18,8 @@ importers:
         specifier: 5.2.1
         version: 5.2.1
       extol:
-        specifier: 1.4.0
-        version: 1.4.0
+        specifier: 1.4.3
+        version: 1.4.3
       morgan:
         specifier: 1.10.1
         version: 1.10.1
@@ -903,9 +903,9 @@ packages:
     resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
     engines: {node: '>= 18'}
 
-  extol@1.4.0:
-    resolution: {integrity: sha512-eCNtrPE8KqoT+60bfxiC290bhgh4MAMzf7MzYa04gmat7IkQ817SclfVLTFWmCK2YN3vfJuPShTuM+2Tz4yHag==}
-    hasBin: true
+  extol@1.4.3:
+    resolution: {integrity: sha512-V7awpy7MGVcDVFiLya0QUQ1YN+Q9XQNzdFRK1XlKTzEVCl+GSvF/6yNAbQmSns4OJUiX2JLgHgXVZSM+p1foLw==}
+    engines: {node: '>=24.0.0'}
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -2373,7 +2373,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  extol@1.4.0:
+  extol@1.4.3:
     dependencies:
       change-case: 5.4.4
       dotenv: 17.3.1
