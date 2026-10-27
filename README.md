@@ -11,7 +11,7 @@ Yet Another Logging Library
 | Name           | Type      | Default value | Description                                                     |
 | -------------- | --------- | ------------- | --------------------------------------------------------------- |
 | YALL_LEVEL     | `String`  | `info`        | Winston log level                                               |
-| YALL_FILENAME  | `String`  | *none*        | File to log messages into (by default, blank = no file logging) |
+| YALL_FILENAME  | `String`  | _none_        | File to log messages into (by default, blank = no file logging) |
 | YALL_COLORED   | `boolean` | `true`        | Whether to use coloring log formatter                           |
 | YALL_TIMESTAMP | `boolean` | `true`        | Whether to prepend log messages with current timestamp          |
 
@@ -27,6 +27,7 @@ yall.info('Info level message');
 yall.warn('Warn level message');
 yall.error('Error level message');
 ```
+
 ### Running
 
 ```bash

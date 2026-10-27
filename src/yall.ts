@@ -82,7 +82,7 @@ export class Yall {
     const stacklist = new Error('workaround').stack?.split('\n');
 
     // stack trace format:
-    // http://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
+    // https://v8.dev/docs/stack-trace-api
     // do not remove the regex expresses to outside of this method (due to a BUG in node.js)
     const stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/gi;
     const stackReg2 = /at\s+()(.*):(\d*):(\d*)/gi;
